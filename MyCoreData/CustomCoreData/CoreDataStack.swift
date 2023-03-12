@@ -124,6 +124,11 @@ final class CoreDataStack {
    .entitiesByName["name"]
    NSRelationshipDescription
    .relationshipsByName["composer"]
+   
+   let song = NSEntityDescription.insertNewObject(forEntityName: "Song", into: content)
+   let composer = NSEntityDescription.insertNewObject(forEntityName: "Composer", into: context)
+   song.setValue(composer, forKey: "composer")
+   
    */
   
   

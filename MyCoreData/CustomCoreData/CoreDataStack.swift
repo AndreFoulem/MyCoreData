@@ -119,6 +119,12 @@ final class CoreDataStack {
      
      
      */
+  /**
+   NSEntityDescription
+   .entitiesByName["name"]
+   NSRelationshipDescription
+   .relationshipsByName["composer"]
+   */
   
   
 }

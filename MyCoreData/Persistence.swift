@@ -38,6 +38,15 @@ struct PersistenceController {
  let newContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
  
  let fetchSong = NSFetchRequest<Song>(entityName: "Song")
+ or
+ let fetchSong = Song.fetchRequest()
+ let predicate = NSPredicate(format: "name = %@", "Time")
+ fetchSong.predicate = predicate
+ 
+ //SORTING
+ let dataSortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+ fetchSong.sortDescriptors = [dataSortDescriptor]
+ 
  let songs = try context.fetch(fetchSong)
  
  If we don't have an NSMangedObject sublass, we can pass NSFetchRequestResult and cast the result later.

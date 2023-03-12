@@ -86,8 +86,39 @@ final class CoreDataStack {
     return managedObjectContext
     
   }()
+
+//  let context = persistentContainer.viewContext
+//  let privateContext = persistentContainer.newBackgroundContext()
   
-  
+    /**
+     Instead of
+     let container = NSPersistentContainer(name: "MyStore")
+     
+     WE CAN DO
+     [A]
+     var objectModel: NSManagedObjectModel =  {
+        guard let url = Bundle.main.url(forResource: "MyModel", withExtension: "momd") else {
+            fatal
+        }
+     
+       guard let managedObjectModel = NSManagedObjectModel(contentOf: url) else {
+            fatal
+        }
+        return managedObjectModel
+     }
+     
+     func persistentContainer () {
+        let container = NSPersistendContainer(name: "mysqlFile", managedObjectModel: objectModel)
+     }
+     
+     let container = NSPersistentContainer(name: "mysqlFile")
+     [B]
+     let storeType = NSPersistentStoreDescription()
+     storeType.type = NSInMemoryStoreType
+     container.persistentStoreDescriptions = [storeType]
+     
+     
+     */
   
   
 }

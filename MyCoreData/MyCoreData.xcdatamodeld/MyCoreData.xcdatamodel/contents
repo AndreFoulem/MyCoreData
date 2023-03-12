@@ -5,9 +5,10 @@
         <attribute name="num" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="songs" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Songs"/>
+        <relationship name="songs" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Songs" inverseName="album" inverseEntity="Songs"/>
     </entity>
     <entity name="Songs" representedClassName="Songs" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="songs" inverseEntity="Album"/>
     </entity>
 </model>

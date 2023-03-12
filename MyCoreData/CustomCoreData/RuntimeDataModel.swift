@@ -23,14 +23,14 @@ struct test {
 //  
 //  entityAlbum.properties = properties
   
-  model.entities = [entityAlbum]
-  
-  //-------------------------- REVERSE DIRECTION -------------
-  let entites: [NSEntityDescription] = PersistenceController.shared.container.managedObjectModel.entities
-  
-  let entity: NSEntityDescription = PersistenceController.shared.container.managedObjectModel.entitiesByName[
-"Album"]
-  
+//  model.entities = [entityAlbum]
+//  
+//  //-------------------------- REVERSE DIRECTION -------------
+//  let entites: [NSEntityDescription] = PersistenceController.shared.container.managedObjectModel.entities
+//  
+//  let entity: NSEntityDescription = PersistenceController.shared.container.managedObjectModel.entitiesByName[
+//"Album"]
+//  
 //  let allAttributes = myAlbum.entity.attributesByName
   
   // let title = myAlbum.value(forKey: "title", as? String)

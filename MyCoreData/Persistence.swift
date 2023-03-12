@@ -33,3 +33,12 @@ struct PersistenceController {
           .automaticallyMergesChangesFromParent = true
     }
 }
+
+/**
+ let newContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+ 
+ let fetchSong = NSFetchRequest<Song>(entityName: "Song")
+ let songs = try context.fetch(fetchSong)
+ 
+ 
+ */

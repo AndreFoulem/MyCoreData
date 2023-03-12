@@ -55,14 +55,36 @@ final class CoreDataStack {
     //-> Pass the path to the SQLite file
     let fileManager = FileManager.default
     let storeName = "MyStorage.sqlite"
+    let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let persistentStoreURL = documentsDirectoryURL.appendingPathComponent(storeName)
+    
     do {
+      let options = [
+        NSMigratePersistentStoresAutomaticallyOption: true,
+        NSInferMappingModelAutomaticallyOption: true
+      ]
+      
         //-> Add a persistent store type to the coordinator
-      try persistentStoreCoordinator2.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil)
+      try persistentStoreCoordinator2.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: persistentStoreURL, options: options)
     } catch {
       fatalError("Unable to Add In-Memomry store to my ")
     }
     
     return persistentStoreCoordinator2
+  }()
+  
+    //--------------------------------------//
+    //----- C -- MANAGED OBJECT CONTEXT ------//
+    //--------------------------------------//
+  lazy var managedObjectContext: NSManagedObjectContext = {
+    //-> Initialize the MOC
+    let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    
+    //-> Add a reference to the PSC
+    managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
+    
+    return managedObjectContext
+    
   }()
   
   

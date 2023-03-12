@@ -53,5 +53,30 @@ struct PersistenceController {
  i.e.
  let fetchSong = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
  
+ ** fetchOffset
+ ** fetchLimit
+ ** includePendingChanges: false
+ 
+ ** objectID: NSManagedObjectID
+ let newSong = try context.existingObject(with: ObjectID)
+ 
+ ** Predefined Fetch Request
+ let fetchRequest = persistentContainer.managedObjectModel.fetchRequestTemplate(forName: "allAlbumRequest")
+ 
+ ** OPTOMISTIC LOCKING **
+ 
+ ** When we fetch and object from a context, Core Data takes a snapshot of the object data from the persistent store, including its to-one relationship **  When to user save the context, the context looks if the snapshot is different from snapshot2.
+ 
+ ** NSErrorMergePolicy = OPTOMISTIC LOCKING
+   .mergeByPropertyStoreTrump   // Trump the store
+ 
+    .mergeByPropertyObjectTrump  // Trump the object
+ 
+    .overwrite  // FORCE ALL EX: User changes obj title, store title and body is changed with server service. .overwrite will trump all off store properties with obj properties.
+ 
+    .rollback // inverso of .overwrite.  Ditches all changes made from objects.
+ 
+ 
+ 
  
  */

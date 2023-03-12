@@ -6,9 +6,13 @@
         <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="songs" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Songs" inverseName="album" inverseEntity="Songs"/>
+        <fetchedProperty name="fetchedProperty" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Album"/>
+        </fetchedProperty>
     </entity>
     <entity name="Songs" representedClassName="Songs" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="songs" inverseEntity="Album"/>
     </entity>
+    <fetchRequest name="allAlbumsRequest" entity="Album" predicateString="title CONTAINS &quot;&quot; OR releaseDate == CAST(700341871.685021, &quot;NSDate&quot;)"/>
 </model>

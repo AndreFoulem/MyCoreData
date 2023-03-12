@@ -40,5 +40,9 @@ struct PersistenceController {
  let fetchSong = NSFetchRequest<Song>(entityName: "Song")
  let songs = try context.fetch(fetchSong)
  
+ If we don't have an NSMangedObject sublass, we can pass NSFetchRequestResult and cast the result later.
+ i.e.
+ let fetchSong = NSFetchRequest<NSFetchRequestResult>(entityName: "Song")
+ 
  
  */
